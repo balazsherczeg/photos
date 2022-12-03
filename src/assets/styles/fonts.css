@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Source Sans 3: Subset for title';
+  font-weight: 200 900;
+  font-display: swap;
+  font-style: normal;
+  src: url(/fonts/SourceSans3-VariableFont_wght-title.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  font-weight: 200 900;
+  font-display: swap;
+  font-style: normal;
+  src: url(/fonts/SourceSans3-VariableFont_wght.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Source Sans 3 Italic';
+  font-weight: 200 900;
+  font-display: swap;
+  font-style: italic;
+  src: url(/fonts/SourceSans3-Italic-VariableFont_wght.ttf) format("truetype");
+}
+
+body {
+  --pageHeaderHeight: 4rem;
+  --sansSubsetForTitle: 'Source Sans 3: Subset for title';
+  --sans: 'Source Sans 3';
+  --sansItalic: 'Source Sans 3 Italic';
+  font-family: var(--sans), serif;
+}

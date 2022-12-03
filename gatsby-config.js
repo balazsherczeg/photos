@@ -24,14 +24,5 @@ module.exports = {
     //     icon: `src/assets/favicon.png`,
     //   },
     // },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `source sans pro\:300,400,400i,500,600,700`
-        ],
-        display: 'swap'
-      }
-    }
   ]
 };

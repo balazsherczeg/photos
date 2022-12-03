@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 
 const Inner = styled.span`
   color: #000;
-  font-family: ${({active}) => (active ? 'var(--serifItalic)' : 'var(--serif)')};
+  font-family: ${({active}) => (active ? 'var(--sansItalic)' : 'var(--sans)')};
   letter-spacing: 0.02em;
   opacity: .8;
   `;

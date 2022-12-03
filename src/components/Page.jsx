@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import {Router} from "@reach/router"
+import React from 'react';
 import styled from 'styled-components'
 
 import Album from '../@packages/react-image-gallery';
@@ -19,7 +18,6 @@ const Page = () => {
       <Main>
         <Album
           items={items}
-          srcBase="http://localhost:8080/"
         />
       </Main>
     </>

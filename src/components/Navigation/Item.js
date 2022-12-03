@@ -2,8 +2,6 @@ import React from 'react';
 import {bool, string} from 'prop-types';
 import {Link} from '@reach/router';
 import styled from 'styled-components';
-import useCategoryItemsDoneCount from '../../data/useCategoryItemsDoneCount';
-import useCategoryItemsCount from '../../data/useCategoryItemsCount';
 
 const Wrapper = styled.div`
   --color: var(--categoryColor-${({category}) => category});
@@ -33,26 +31,6 @@ const Inner = styled.span`
   opacity: .8;
   `;
 
-const Count = styled.span`
-  font-size: 11.5px;
-  font-family: var(--sansBold);
-  margin-left: .5rem;
-  opacity: .7;
-`;
-
-const Slash = styled.span`
-  display: inline-block;
-  padding: 0 .1em;
-`;
-
-const Svg = styled.svg`
-  height: 1.5rem;
-  left: 1rem;
-  position: absolute;
-  top: 0.75rem;
-  width: 1.5rem;
-`;
-
 const Item = ({
   active,
   children,
@@ -60,9 +38,6 @@ const Item = ({
   slug,
   href,
 }) => {
-  const itemsDoneCount = useCategoryItemsDoneCount(slug);
-  const itemsCount = useCategoryItemsCount(slug);
-
   return (
     <Wrapper
       active={active}

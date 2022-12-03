@@ -37,9 +37,6 @@ const Gallery = ({
     )
     : null;
 
-
-  console.log(items);
-
   return (
     <div className="VMG">
       {items ? (

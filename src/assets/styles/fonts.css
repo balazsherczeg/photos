@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Source Sans 3: Subset for title';
   font-weight: 200 900;
-  font-display: swap;
+  font-display: block;
   font-style: normal;
   src: url(/fonts/SourceSans3-VariableFont_wght-title.ttf) format("truetype");
 }

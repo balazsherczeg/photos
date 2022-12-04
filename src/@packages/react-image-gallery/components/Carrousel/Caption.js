@@ -6,7 +6,6 @@ import {itemPropType} from '../../data';
 
 const Wrapper = styled.div`
   background-color: #fff;
-  font-family: sans-serif;
   height: 48px;
   line-height: 48px;
   padding: 0 16px;
@@ -21,7 +20,12 @@ const Description = styled.p`
   margin: 0;
 `;
 
-const formatDate = (date) => date;
+const formatDate = (date) => {
+  const dateParts = date.split("-");
+  return (dateParts.length === 3) 
+    ? `${dateParts[2]}.${dateParts[1]}.${dateParts[0]}` 
+    : date; 
+};
 
 const Caption = ({
   item: {
@@ -39,7 +43,7 @@ const Caption = ({
         {(date || location) && (
           <Meta className="VMG__Caption__meta">
             {formatDate(date)}
-            {date && location && ', '}
+            {!!date && !!location && ', '}
             {location}
           </Meta>
         )}

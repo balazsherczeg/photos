@@ -9,7 +9,7 @@ const useItemsByCategory = () => {
   const categories = useCategories();
   const allItems = useItems();
 
-  const [patterns, setItems] = useState([]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const category = getCategoryBySlug(categorySlug, categories);
@@ -28,7 +28,7 @@ const useItemsByCategory = () => {
     }
   }, [allItems, categorySlug, categories]);
 
-  return patterns;
+  return items;
 };
 
 export default useItemsByCategory;

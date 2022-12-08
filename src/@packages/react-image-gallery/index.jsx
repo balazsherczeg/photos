@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {arrayOf} from 'prop-types';
 
 import {itemPropType} from './data';
@@ -7,22 +7,41 @@ import Loading from './components/Loading';
 import ImageComponent from './components/Image';
 import Masonry from './components/Masonry';
 import Layout from './components/Layout';
-// import { useNavigate } from "@reach/router"
+import {useNavigate} from "@reach/router"
+import { useCallback } from 'react';
+import {useMatch} from '@reach/router';
 
 const Gallery = ({
   items,
 }) => {
+  const navigate = useNavigate();
   const [fullView, setFullView] = useState(null);
   const [showFullView, setShowFullView] = useState(false);
-  // const navigate = useNavigate();
+  const {paramItemId} = useMatch('/item/:paramItemId') ?? {};
+  const [parentLocation, setParentLocation] = useState('/');
 
-  const handleItemClick = (index) => {
-    // navigate("/photos/index");
+  useEffect(() => {
+    if (paramItemId) {
+      setShowFullView(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (items.length && paramItemId) {
+      const index = items.findIndex(item => item.id === paramItemId);
+      setFullView(index !== -1 ? index : null)  
+    }
+  }, [items]);
+
+  const handleItemClick = useCallback((index) => {
+    setParentLocation(window.location.pathname);
+    navigate(`/item/${items[index]?.id}`);
     setFullView(index);
     setShowFullView(true);
-  };
+  }, [items]);
 
   const handleHideFullView = () => {
+    navigate(parentLocation);
     setShowFullView(false);
   };
 

@@ -49,12 +49,17 @@ const Gallery = ({
     setTimeout(() => setFullView(null), 1000);
   };
 
+  const handleNext = useCallback((index) => {
+    navigate(`/item/${items[index]?.id}`);
+  }, [items]);
+
   const modal = fullView != null
     ? (
       <Carrousel
         items={items}
         index={fullView}
         onClose={handleHideFullView}
+        onNext={handleNext}
       />
     )
     : null;

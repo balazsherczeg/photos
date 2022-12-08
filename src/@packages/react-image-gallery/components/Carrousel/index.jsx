@@ -22,6 +22,7 @@ const Main = styled.div`
 const Carrousel = ({
   index: startIndex,
   onClose,
+  onNext,
   items,
 }) => {
   const [index, setIndex] = useState(startIndex);
@@ -33,6 +34,7 @@ const Carrousel = ({
   });
 
   const handleClick = (nextIndex) => {
+    onNext(nextIndex);
     setIndex(nextIndex);
     const nextRenderables = [...renderables];
     nextRenderables.push(nextIndex);

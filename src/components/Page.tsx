@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Album from '@packages/gallery';
+import Gallery from '@packages/Gallery';
 import useItemsByCategory from 'data/useItemsByCategory';
 import Header from './Header';
 
@@ -15,7 +15,7 @@ const Page = () => {
     <>
       <Header />
       <Main>
-        <Album items={items} />
+        <Gallery items={items} />
       </Main>
     </>
   );

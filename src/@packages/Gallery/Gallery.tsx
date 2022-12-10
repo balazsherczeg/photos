@@ -2,18 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useCallback } from 'react';
 import { useMatch } from '@reach/router';
 import { navigate } from 'gatsby';
-import { arrayOf } from 'prop-types';
+import { Item } from 'models/Item';
 import Carrousel from './components/Carrousel';
 import ImageComponent from './components/Image';
 import Layout from './components/Layout';
 import Loading from './components/Loading';
 import Masonry from './components/Masonry';
-import { itemPropType } from './data';
 
-const Gallery = ({ items }) => {
-  const [fullView, setFullView] = useState(null);
+const Gallery = ({ items }: { items: Item[] }) => {
+  const [fullView, setFullView] = useState<number | null>(null);
   const [showFullView, setShowFullView] = useState(false);
-  const { paramItemId } = useMatch('/item/:paramItemId') ?? {};
+  const { paramItemId } = useMatch('/item/:paramItemId') ?? ({} as any);
   const [parentLocation, setParentLocation] = useState('/');
 
   useEffect(() => {
@@ -30,7 +29,7 @@ const Gallery = ({ items }) => {
   }, [items]);
 
   const handleItemClick = useCallback(
-    (index) => {
+    (index: number) => {
       setParentLocation(window.location.pathname);
       navigate(`/item/${items[index]?.id}`);
       setFullView(index);
@@ -49,7 +48,7 @@ const Gallery = ({ items }) => {
   };
 
   const handleNext = useCallback(
-    (index) => {
+    (index: number) => {
       navigate(`/item/${items[index]?.id}`);
     },
     [items]
@@ -86,14 +85,6 @@ const Gallery = ({ items }) => {
       )}
     </div>
   );
-};
-
-Gallery.propTypes = {
-  items: arrayOf(itemPropType),
-};
-
-Gallery.defaultProps = {
-  items: null,
 };
 
 export default Gallery;

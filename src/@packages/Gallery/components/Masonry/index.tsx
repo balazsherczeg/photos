@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import useDimensions from 'react-cool-dimensions';
-import { arrayOf, elementType, func, object } from 'prop-types';
+import { Item as ItemType } from 'models/Item';
 import styled from 'styled-components';
+import { LayoutCache } from '@packages/Gallery/models/LayoutCache';
 import { useWindowSize, useScroll } from '../hooks';
 import calculateMasonry from './calculateMasonry';
 import getVisibleItems from './getVisibleItems';
@@ -11,14 +12,24 @@ const MasonryStyled = styled.div`
   position: relative;
 `;
 
-const Masonry = ({ items, itemComponent, handleClick }) => {
+const Masonry = ({
+  items,
+  itemComponent,
+  handleClick,
+}: {
+  items: ItemType[];
+  itemComponent: (props: any) => JSX.Element;
+  handleClick: (index: number) => void;
+}) => {
   const { height: windowHeight } = useWindowSize();
   const { y: scrollTop } = useScroll();
   const { observe: containerRef, width: containerWidth } = useDimensions();
 
-  const [layoutCache, setLayoutCache] = useState({});
-  const [renderedItems, setRenderedItems] = useState([]);
-  const [visibleItems, setVisibleItems] = useState([]);
+  const [layoutCache, setLayoutCache] = useState<LayoutCache>(
+    {} as LayoutCache
+  );
+  const [renderedItems, setRenderedItems] = useState<JSX.Element[]>([]);
+  const [visibleItems, setVisibleItems] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     setLayoutCache(calculateMasonry({ items, containerWidth }));
@@ -57,12 +68,6 @@ const Masonry = ({ items, itemComponent, handleClick }) => {
       {visibleItems}
     </MasonryStyled>
   );
-};
-
-Masonry.propTypes = {
-  items: arrayOf(object).isRequired,
-  itemComponent: elementType.isRequired,
-  handleClick: func.isRequired,
 };
 
 export default Masonry;

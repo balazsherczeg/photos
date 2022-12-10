@@ -29,10 +29,11 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
-        utils: path.join(__dirname, 'src', 'utils'),
-        data: path.join(__dirname, 'src', 'data'),
         assets: path.join(__dirname, 'src', 'assets'),
+        data: path.join(__dirname, 'src', 'data'),
+        models: path.join(__dirname, 'src', 'models'),
         '@packages': path.join(__dirname, 'src', '@packages'),
+        utils: path.join(__dirname, 'src', 'utils'),
       },
     },
   ],

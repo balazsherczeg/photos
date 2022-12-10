@@ -28,6 +28,9 @@ module.exports = {
   rules: {
     'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+
     quotes: ['error', 'single'],
     'prettier/prettier': [
       'warn',
@@ -51,7 +54,6 @@ module.exports = {
       files: ['*.js', '*.jsx'],
       rules: {
         '@typescript-eslint/no-var-requires': 'off', //
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
       },
     },
   ],

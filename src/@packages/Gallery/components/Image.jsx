@@ -79,12 +79,12 @@ const ImageComponent = ({ item, size: { width, height } }) => {
   );
 };
 
-ImageComponent.propTypes = {
-  item: itemPropType.isRequired,
-  size: {
-    width: number,
-    height: number,
-  }.isRequired,
-};
+// ImageComponent.propTypes = {
+//   item: itemPropType.isRequired,
+//   size: {
+//     width: number,
+//     height: number,
+//   }.isRequired,
+// };
 
 export default ImageComponent;

@@ -7,14 +7,13 @@ import Loading from './components/Loading';
 import ImageComponent from './components/Image';
 import Masonry from './components/Masonry';
 import Layout from './components/Layout';
-import {useNavigate} from "@reach/router"
+import {navigate} from "gatsby";
 import { useCallback } from 'react';
 import {useMatch} from '@reach/router';
 
 const Gallery = ({
   items,
 }) => {
-  const navigate = useNavigate();
   const [fullView, setFullView] = useState(null);
   const [showFullView, setShowFullView] = useState(false);
   const {paramItemId} = useMatch('/item/:paramItemId') ?? {};

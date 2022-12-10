@@ -7,8 +7,8 @@ import '../assets/styles/reset.css';
 import '../assets/styles/fonts.css';
 
 const Index = () => (
-  <Router>
-    <Page default="/" />
+  <Router basepath="/">
+    <Page path="/*" />
   </Router>
 );
 

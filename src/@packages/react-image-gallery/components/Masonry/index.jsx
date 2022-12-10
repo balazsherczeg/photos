@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {arrayOf, elementType, func, object} from 'prop-types';
 import styled from 'styled-components';
 
-import {useWindowSize, useScroll, useContainerSize} from '../hooks';
+import {useWindowSize, useScroll} from '../hooks';
 import calculateMasonry from './calculateMasonry';
 import getVisibleItems from './getVisibleItems';
 import renderItems from './renderItems';
+import useDimensions from 'react-cool-dimensions';
 
 const MasonryStyled = styled.div`
   position: relative;
@@ -18,14 +19,14 @@ const Masonry = ({
 }) => {
   const {height: windowHeight} = useWindowSize();
   const {y: scrollTop} = useScroll();
-  const {ref: containerRef, width: containerWidth} = useContainerSize();
+  const {observe: containerRef, width: containerWidth} = useDimensions();
 
   const [layoutCache, setLayoutCache] = useState({});
   const [renderedItems, setRenderedItems] = useState([]);
   const [visibleItems, setVisibleItems] = useState([]);
 
   useEffect(() => {
-      setLayoutCache(
+    setLayoutCache(
       calculateMasonry({items, containerWidth}),
     );
   }, [
@@ -35,7 +36,7 @@ const Masonry = ({
 
   useEffect(() => {
     if (layoutCache.positions) {
-        setRenderedItems(
+      setRenderedItems(
         renderItems({items, itemComponent, handleClick}, layoutCache),
       );
     }

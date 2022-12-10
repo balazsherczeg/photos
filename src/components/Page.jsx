@@ -11,7 +11,7 @@ const Main = styled.div`
 
 const Page = () => {
   const items = useItemsByCategory();
-
+  
   return (
     <>
       <Header />

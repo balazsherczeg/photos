@@ -1,8 +1,8 @@
-import {useState, useEffect} from 'react';
-import useCategory from './useCategory';
+import { useState, useEffect } from 'react';
 import useCategories from './useCategories';
+import useCategory from './useCategory';
 import useItems from './useItems';
-import {getCategoryBySlug} from './utils';
+import { getCategoryBySlug } from './utils';
 
 const useItemsByCategory = () => {
   const categorySlug = useCategory();
@@ -22,7 +22,9 @@ const useItemsByCategory = () => {
         setItems([]);
         break;
       default: {
-        const filteredData = allItems.filter((item) => item.category === category.id);
+        const filteredData = allItems.filter(
+          (item) => item.category === category.id
+        );
         setItems(filteredData);
       }
     }

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import srcs from './srcs';
 
 const usePattern = (id) => {
@@ -6,15 +6,11 @@ const usePattern = (id) => {
 
   useEffect(() => {
     if (!srcs[id]) {
-      fetch(`${process.env.DATA_URL}${id}.svg`).then(
-        (result) => (
-          result.text().then(
-            (svg) => {
-              srcs[id] = svg;
-              setLoaded(true);
-            },
-          )
-        ),
+      fetch(`${process.env.DATA_URL}${id}.svg`).then((result) =>
+        result.text().then((svg) => {
+          srcs[id] = svg;
+          setLoaded(true);
+        })
       );
     }
   }, []);

@@ -15,7 +15,7 @@ const Root = styled.header`
     font-size: 24px;
     font-family: var(--sansSubsetForTitle);
     font-weight: 300;
-  
+
     b {
       font-weight: 600;
     }
@@ -24,7 +24,9 @@ const Root = styled.header`
 
 const Header = () => (
   <Root>
-    <h1 className="title"><b>Balázs Herczeg</b> amateur photography</h1>
+    <h1 className="title">
+      <b>Balázs Herczeg</b> amateur photography
+    </h1>
     <Navigation />
   </Root>
 );

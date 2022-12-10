@@ -1,7 +1,7 @@
 import useData from './useData';
 
 const useCategories = () => {
-  const {categories} = useData();
+  const { categories } = useData();
 
   return categories || [];
 };

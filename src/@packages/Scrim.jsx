@@ -1,5 +1,5 @@
 import React from 'react';
-import {func, string} from 'prop-types';
+import { func, string } from 'prop-types';
 import styled from 'styled-components';
 
 const Cover = styled.div`
@@ -11,14 +11,8 @@ const Cover = styled.div`
   z-index: 100;
 `;
 
-const Scrim = ({
-  background,
-  onClick,
-}) => (
-  <Cover
-    onClick={onClick}
-    style={{background}}
-  />
+const Scrim = ({ background, onClick }) => (
+  <Cover onClick={onClick} style={{ background }} />
 );
 
 Scrim.propTypes = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {node} from 'prop-types';
+import { node } from 'prop-types';
 import styled from 'styled-components';
 
 const DURATION = 500;
@@ -11,12 +11,7 @@ const Modal = styled.div`
   top: 0;
   z-index: 2;
 
-  ${({
-    from,
-    width,
-    height,
-    duration = DURATION,
-  }) => {
+  ${({ from, width, height, duration = DURATION }) => {
     switch (from) {
       case 'bottom': {
         return `
@@ -66,11 +61,10 @@ const Modal = styled.div`
   }}
 `;
 
-const SlideInModal = ({
-  children,
-  ...restProps
-}) => (
-  <Modal className="SlideInModal" {...restProps}>{children}</Modal>
+const SlideInModal = ({ children, ...restProps }) => (
+  <Modal className="SlideInModal" {...restProps}>
+    {children}
+  </Modal>
 );
 
 SlideInModal.propTypes = {

@@ -1,8 +1,7 @@
-import React, {Fragment} from 'react';
-import {bool, func, oneOf, node, number} from 'prop-types';
+import React, { Fragment } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { bool, func, oneOf, node, number } from 'prop-types';
 import styled from 'styled-components';
-import {CSSTransition} from 'react-transition-group';
-
 import Portal from '../Portal';
 import Scrim from '../Scrim';
 import SlideInInner from './SlideInModal';
@@ -56,10 +55,7 @@ const SlideIn = ({
   return (
     <>
       {scrim && (
-        <CSSTransition
-          {...cssTransitionProps}
-          classNames="scrim-transition"
-        >
+        <CSSTransition {...cssTransitionProps} classNames="scrim-transition">
           <PortalWrapper>
             <ScrimTransition>
               <Scrim
@@ -71,9 +67,7 @@ const SlideIn = ({
         </CSSTransition>
       )}
 
-      <SlideInWrapper
-        on={on}
-      >
+      <SlideInWrapper on={on}>
         <PortalWrapper>
           <SlideInInner
             from={from}

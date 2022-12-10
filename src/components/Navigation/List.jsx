@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import useCategory from '../../data/useCategory';
-import useCategories from '../../data/useCategories';
+import useCategories from 'data/useCategories';
+import useCategory from 'data/useCategory';
 import Item from './Item';
 
 const Wrapper = styled.div`
@@ -20,20 +19,20 @@ const List = () => {
 
   return (
     <Wrapper>
-      <Item to="/" active={category == null}>All</Item>
+      <Item to="/" active={category == null}>
+        All
+      </Item>
 
-      {categories.map(
-        ({slug, name}) => (
-          <Item
-            key={slug}
-            to={`/category/${slug}`}
-            active={slug === category}
-            slug={slug}
-          >
-            {name}
-          </Item>
-        ),
-      )}
+      {categories.map(({ slug, name }) => (
+        <Item
+          key={slug}
+          to={`/category/${slug}`}
+          active={slug === category}
+          slug={slug}
+        >
+          {name}
+        </Item>
+      ))}
     </Wrapper>
   );
 };

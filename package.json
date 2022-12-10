@@ -13,7 +13,9 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint --ignore-path .eslintignore . --ext ts --ext tsx --ext js --ext jsx",
+    "lint-fix": "eslint --ignore-path .eslintignore . --ext ts --ext tsx --ext js --ext jsx --fix"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^2.0.7",
@@ -31,9 +33,17 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/node": "^18.11.10",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "gatsby-plugin-root-import": "^2.0.9",
     "typescript": "^4.9.3"
   }
 }

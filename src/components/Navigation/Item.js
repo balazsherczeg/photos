@@ -1,13 +1,13 @@
 import React from 'react';
-import {bool, string} from 'prop-types';
-import {Link} from '@reach/router';
+import { Link } from '@reach/router';
+import { bool, string } from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  --color: var(--categoryColor-${({category}) => category});
+  --color: var(--categoryColor-${({ category }) => category});
 
   position: relative;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   transition-property: background-color, fill;
 
   a {
@@ -26,36 +26,22 @@ const Wrapper = styled.div`
 
 const Inner = styled.span`
   color: #000;
-  font-family: ${({active}) => (active ? 'var(--sansItalic)' : 'var(--sans)')};
+  font-family: ${({ active }) =>
+    active ? 'var(--sansItalic)' : 'var(--sans)'};
   letter-spacing: 0.02em;
-  opacity: .8;
-  `;
+  opacity: 0.8;
+`;
 
-const Item = ({
-  active,
-  children,
-  to,
-  slug,
-  href,
-}) => {
+const Item = ({ active, children, to, slug, href }) => {
   return (
-    <Wrapper
-      active={active}
-      category={slug}
-    >
+    <Wrapper active={active} category={slug}>
       {href ? (
         <a href={href}>
-          <Inner>
-            {children}
-          </Inner>
+          <Inner>{children}</Inner>
         </a>
       ) : (
         <Link to={to}>
-          <Inner
-            active={active}
-          >
-            {children}
-          </Inner>
+          <Inner active={active}>{children}</Inner>
         </Link>
       )}
     </Wrapper>

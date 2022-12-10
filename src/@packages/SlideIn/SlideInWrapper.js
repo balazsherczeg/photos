@@ -1,12 +1,8 @@
 import React from 'react';
-import {bool, func, node, number} from 'prop-types';
-import {CSSTransition} from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
+import { bool, func, node, number } from 'prop-types';
 
-const SlideIn = ({
-  children,
-  on,
-  duration,
-}) => {
+const SlideIn = ({ children, on, duration }) => {
   const cssTransitionProps = {
     in: on,
     unmountOnExit: true,
@@ -14,10 +10,7 @@ const SlideIn = ({
   };
 
   return (
-    <CSSTransition
-      {...cssTransitionProps}
-      classNames="modal-transition"
-    >
+    <CSSTransition {...cssTransitionProps} classNames="modal-transition">
       {children}
     </CSSTransition>
   );

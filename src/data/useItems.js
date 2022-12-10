@@ -1,7 +1,7 @@
 import useData from './useData';
 
 const useItems = () => {
-  const {items} = useData();
+  const { items } = useData();
 
   return items || [];
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import useDimensions from 'react-cool-dimensions';
 import { Item as ItemType } from 'models/Item';
 import styled from 'styled-components';
@@ -25,46 +25,31 @@ const Masonry = ({
   const { y: scrollTop } = useScroll();
   const { observe: containerRef, width: containerWidth } = useDimensions();
 
-  const [layoutCache, setLayoutCache] = useState<LayoutCache>(
-    {} as LayoutCache
+  const layoutCache = useMemo(
+    (): LayoutCache => calculateMasonry({ items, containerWidth }),
+    [containerWidth, items]
   );
-  const [renderedItems, setRenderedItems] = useState<JSX.Element[]>([]);
-  const [visibleItems, setVisibleItems] = useState<JSX.Element[]>([]);
 
-  useEffect(() => {
-    setLayoutCache(calculateMasonry({ items, containerWidth }));
-  }, [containerWidth, items]);
+  const renderedItems = useMemo(
+    () =>
+      layoutCache.positions
+        ? renderItems({ items, itemComponent, handleClick }, layoutCache)
+        : [],
+    [layoutCache]
+  );
 
-  useEffect(() => {
-    if (layoutCache.positions) {
-      setRenderedItems(
-        renderItems({ items, itemComponent, handleClick }, layoutCache)
-      );
-    }
-  }, [ // eslint-disable-line
-    layoutCache,
-  ]);
+  const visibleItems = useMemo(
+    () =>
+      renderedItems.length
+        ? getVisibleItems(renderedItems, layoutCache, windowHeight, scrollTop)
+        : [],
+    [renderedItems, scrollTop, windowHeight]
+  );
 
-  useEffect(() => {
-    if (renderedItems.length) {
-      setVisibleItems(
-        getVisibleItems(renderedItems, layoutCache, windowHeight, scrollTop)
-      );
-    }
-  }, [ // eslint-disable-line
-    renderedItems,
-    scrollTop,
-    windowHeight,
-  ]);
-
-  const { containerHeight } = layoutCache;
+  const style = useMemo(() => ({ height: layoutCache.containerHeight }), []);
 
   return (
-    <MasonryStyled
-      className="VMG__Masonry"
-      style={{ height: containerHeight }}
-      ref={containerRef}
-    >
+    <MasonryStyled className="VMG__Masonry" style={style} ref={containerRef}>
       {visibleItems}
     </MasonryStyled>
   );

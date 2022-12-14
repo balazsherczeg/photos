@@ -2,4 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/np16374/domains/herczeg.ee/photos
+    # Balazss-MBP:Desktop balazs$ cd public
+    # Balazss-MBP:public balazs$ rm -R -- */
+    # Balazss-MBP:public balazs$ rm *
     - /bin/cp -R public/* $DEPLOYPATH

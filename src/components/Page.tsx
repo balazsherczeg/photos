@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Gallery from '@packages/Gallery';
-import useItemsByCategory from 'data/useItemsByCategory';
+import useItems from 'data/useItems';
 import Header from './Header';
 
 const Main = styled.div`
@@ -9,7 +9,7 @@ const Main = styled.div`
 `;
 
 const Page = () => {
-  const items = useItemsByCategory();
+  const items = useItems();
 
   return (
     <>

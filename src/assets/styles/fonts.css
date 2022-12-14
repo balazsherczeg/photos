@@ -27,5 +27,5 @@ body {
   --sansSubsetForTitle: 'Source Sans 3: Subset for title';
   --sans: 'Source Sans 3';
   --sansItalic: 'Source Sans 3 Italic';
-  font-family: var(--sans), serif;
+  font-family: var(--sans), sans-serif;
 }

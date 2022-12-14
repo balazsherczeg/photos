@@ -13,7 +13,7 @@ const sortByDateDescFn = (a: Item, b: Item) =>
 const sortByDateAscFn = (a: Item, b: Item) =>
   a.meta.date === b.meta.date ? a.id < b.id : a.meta.date > b.meta.date;
 
-const useItemsByCategory = (): Item[] => {
+const useItems = (): Item[] => {
   const categorySlug = useCategory();
   const categories = useCategories();
   const allItems = useAllItems();
@@ -44,4 +44,4 @@ const useItemsByCategory = (): Item[] => {
   return items;
 };
 
-export default useItemsByCategory;
+export default useItems;

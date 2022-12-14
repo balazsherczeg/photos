@@ -1,6 +1,7 @@
+import { Category } from 'models/Category';
 import useData from './useData';
 
-const useCategories = () => {
+const useCategories = (): Category[] => {
   const { categories } = useData();
 
   return categories || [];

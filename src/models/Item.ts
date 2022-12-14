@@ -14,4 +14,5 @@ export interface Item {
     location: string;
   };
   category: number;
+  tags: string[];
 }

@@ -1,25 +1,19 @@
 import React from 'react';
+import { TaxonomyTypes } from 'models/Taxonomy';
 import styled from 'styled-components';
 import useCategories from 'data/useCategories';
-import useCategory from 'data/useCategory';
+import useTaxonomy from 'data/useTaxonomy';
 import Item from './Item';
 
-const Wrapper = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 300px;
-  right: 0;
-  background: #fff;
-`;
+const Wrapper = styled.div``;
 
-const List = () => {
+const Categories = () => {
   const categories = useCategories();
-  const category = useCategory();
+  const { taxonomyType, taxonomyValue } = useTaxonomy();
 
   return (
     <Wrapper>
-      <Item to="/" active={category == null}>
+      <Item to="/" active={taxonomyType == null}>
         All
       </Item>
 
@@ -27,7 +21,9 @@ const List = () => {
         <Item
           key={slug}
           to={`/category/${slug}`}
-          active={slug === category}
+          active={
+            taxonomyType === TaxonomyTypes.CATEGORY && slug === taxonomyValue
+          }
           slug={slug}
         >
           {name}
@@ -37,4 +33,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default Categories;

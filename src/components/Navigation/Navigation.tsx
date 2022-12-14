@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import SlideIn from '@packages/SlideIn';
-import List from './List';
+import Categories from './Categories';
+import Tags from './Tags';
 
 const Button = styled.button`
   align-items: center;
@@ -14,6 +15,15 @@ const Button = styled.button`
   width: 3rem;
   align-items: center;
   justify-content: center;
+`;
+
+const SidebarRoot = styled.nav`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  right: 0;
+  background: #fff;
 `;
 
 const Navigation = () => {
@@ -41,7 +51,10 @@ const Navigation = () => {
       </Button>
 
       <SlideIn on={showMenu} onClose={handleClose} width={300}>
-        <List />
+        <SidebarRoot>
+          <Categories />
+          <Tags />
+        </SidebarRoot>
       </SlideIn>
     </div>
   );

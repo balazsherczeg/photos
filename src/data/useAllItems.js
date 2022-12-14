@@ -1,9 +1,9 @@
 import useData from './useData';
 
-const useItems = () => {
+const useAllItems = () => {
   const { items } = useData();
 
   return items || [];
 };
 
-export default useItems;
+export default useAllItems;

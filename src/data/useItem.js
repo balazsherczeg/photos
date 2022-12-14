@@ -1,7 +1,7 @@
-import useItems from './useItems';
+import useAllItems from './useAllItems';
 
 const useItem = (id) => {
-  const items = useItems();
+  const items = useAllItems();
   const i = items.find((item) => item.id === id);
   return i;
 };

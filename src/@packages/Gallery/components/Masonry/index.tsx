@@ -46,7 +46,10 @@ const Masonry = ({
     [renderedItems, scrollTop, windowHeight]
   );
 
-  const style = useMemo(() => ({ height: layoutCache.containerHeight }), []);
+  const style = useMemo(
+    () => ({ height: layoutCache.containerHeight }),
+    [layoutCache.containerHeight]
+  );
 
   return (
     <MasonryStyled className="VMG__Masonry" style={style} ref={containerRef}>

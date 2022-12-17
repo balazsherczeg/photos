@@ -29,6 +29,7 @@ const renderItems = (props, layoutCache) => {
         onClick={() => handleClick(i)}
         className="VMG__MasonryItem"
         role="button"
+        id={item.id}
       >
         <ItemComponent item={item} size={position} />
       </MasonryItem>

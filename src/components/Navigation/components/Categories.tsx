@@ -1,18 +1,15 @@
 import React from 'react';
 import { TaxonomyTypes } from 'models/Taxonomy';
-import styled from 'styled-components';
 import useCategories from 'data/useCategories';
 import useTaxonomy from 'data/useTaxonomy';
 import Item from './Item';
-
-const Wrapper = styled.div``;
 
 const Categories = () => {
   const categories = useCategories();
   const { taxonomyType, taxonomyValue } = useTaxonomy();
 
   return (
-    <Wrapper>
+    <div>
       <Item to="/" active={taxonomyType == null}>
         All
       </Item>
@@ -29,7 +26,7 @@ const Categories = () => {
           {name}
         </Item>
       ))}
-    </Wrapper>
+    </div>
   );
 };
 

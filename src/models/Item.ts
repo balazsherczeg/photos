@@ -5,7 +5,7 @@ interface Source {
 }
 
 export interface Item {
-  id: number;
+  id: string;
   sources: { [key: string]: Source };
   meta: {
     color: string;

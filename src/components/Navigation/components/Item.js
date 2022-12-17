@@ -4,23 +4,20 @@ import { bool, string } from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  --color: var(--categoryColor-${({ category }) => category});
-
   position: relative;
   transition: all 0.3s ease;
   transition-property: background-color, fill;
 
   a {
     display: block;
-    fill: var(--color);
-    line-height: 3rem;
-    height: 3rem;
-    padding: 0 1rem 0 3rem;
+    line-height: 2rem;
+    height: 2rem;
+    padding: 0 1rem 0 2rem;
     text-decoration: none;
   }
 
   a:hover {
-    background-color: #eee;
+    background-color: #ccc;
   }
 `;
 

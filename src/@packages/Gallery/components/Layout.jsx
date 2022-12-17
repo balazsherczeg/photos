@@ -2,6 +2,7 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { bool, node, func } from 'prop-types';
 import styled from 'styled-components';
+import Portal from '@packages/Portal';
 
 const Modal = styled.div`
   background-color: white;
@@ -11,12 +12,12 @@ const Modal = styled.div`
   position: fixed;
   right: 0;
   top: 0;
-  width: 100vw;
-  transition: 0.3s;
   transform: translate3d(0, 100vh, 0);
+  transition: 0.3s;
+  width: 100vw;
 
   &.VMG__Modal--enter {
-    opacity: 0;
+    opacity: 1;
     transform: translate3d(0, 100vh, 0);
   }
   &.VMG__Modal--enter-done {
@@ -28,7 +29,7 @@ const Modal = styled.div`
     transform: translate3d(0, 0, 0);
   }
   &.VMG__Modal--exit-done {
-    opacity: 0;
+    opacity: 1;
     transform: translate3d(0, 100vh, 0);
   }
 `;
@@ -43,7 +44,9 @@ const Layout = ({ children, modal, onUnmountModal, showModal }) => (
       classNames="VMG__Modal-"
       onExited={onUnmountModal}
     >
-      <Modal className="VMG__Modal">{modal}</Modal>
+      <Portal>
+        <Modal className="VMG__Modal">{modal}</Modal>
+      </Portal>
     </CSSTransition>
   </>
 );

@@ -47,7 +47,7 @@ const Carrousel = ({ index: startIndex, onClose, onNext, items }) => {
   const handleKeyDown = (event) => {
     switch (event.keyCode) {
       case 27: // Escape
-        onClose();
+        onClose(index);
         break;
       case 39: // Right arrow
         if (!lastFrame) handleNextClick();
@@ -72,7 +72,7 @@ const Carrousel = ({ index: startIndex, onClose, onNext, items }) => {
       <Buttons
         onPrev={handlePrevClick}
         onNext={handleNextClick}
-        onClose={onClose}
+        onClose={() => onClose(index)}
         showPrev={!firstFrame}
         showNext={!lastFrame}
       />

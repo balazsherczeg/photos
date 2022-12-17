@@ -22,24 +22,30 @@ const Gallery = ({ items }: { items: Item[] }) => {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [items]);
+
+  useEffect(() => {
     if (items.length && paramItemId) {
       const index = items.findIndex((item) => item.id === paramItemId);
       setFullView(index !== -1 ? index : null);
     }
   }, [items]);
 
-  const handleItemClick = useCallback(
-    (index: number) => {
-      setParentLocation(window.location.pathname);
-      navigate(`/item/${items[index]?.id}`);
-      setFullView(index);
-      setShowFullView(true);
-    },
-    [items]
-  );
+  const handleItemClick = (index: number) => {
+    setParentLocation(window.location.pathname);
+    navigate(`/item/${items[index]?.id}`);
+    setFullView(index);
+    setShowFullView(true);
+  };
 
-  const handleHideFullView = () => {
-    navigate(parentLocation);
+  const handleHideFullView = async (index: number) => {
+    await navigate(parentLocation);
+    const activeElement = document.getElementById(items[index]?.id);
+    console.log(items[index]?.id);
+    console.log(activeElement);
+    console.log(activeElement?.style.top);
+    activeElement?.scrollIntoView();
     setShowFullView(false);
   };
 

@@ -5,7 +5,7 @@ import useItems from 'data/useItems';
 import Header from './Header';
 
 const Main = styled.div`
-  padding: 0 16px 32px;
+  padding: 4rem 16px 32px;
 `;
 
 const Page = () => {

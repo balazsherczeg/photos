@@ -31,6 +31,7 @@ const config: GatsbyConfig = {
       options: {
         assets: path.join(__dirname, 'src', 'assets'),
         data: path.join(__dirname, 'src', 'data'),
+        hooks: path.join(__dirname, 'src', 'hooks'),
         models: path.join(__dirname, 'src', 'models'),
         '@packages': path.join(__dirname, 'src', '@packages'),
         utils: path.join(__dirname, 'src', 'utils'),

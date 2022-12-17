@@ -29,6 +29,7 @@ const formatDate = (date) => {
 const Caption = ({
   item: {
     meta: { caption, date, location },
+    id,
   },
   className,
 }) => {
@@ -43,7 +44,7 @@ const Caption = ({
           </Meta>
         )}
         <Description className="VMG__Caption__description">
-          {caption}
+          {caption} {id}
         </Description>
       </Wrapper>
     );

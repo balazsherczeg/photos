@@ -5,6 +5,9 @@ import path from 'path';
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const config: GatsbyConfig = {
+  flags: {
+    DEV_SSR: true,
+  },
   siteMetadata: {
     title: 'Photos',
     siteUrl: 'https://photos.herczeg.ee',

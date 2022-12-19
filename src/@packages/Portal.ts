@@ -15,11 +15,8 @@ const Portal = ({
 
   useEffect(() => {
     if (container) {
-      container.style = {
-        ...(container.style ?? {}),
-        position,
-        zIndex,
-      };
+      container.style.position = position;
+      container.style.zIndex = zIndex;
       document.body.appendChild(container);
     }
     return () => {

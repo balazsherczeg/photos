@@ -47,7 +47,7 @@ const Root = styled.header<{ scrollPositionY: number }>`
 `;
 
 const Header = () => {
-  const { y } = useScroll();
+  const { y = 0 } = useScroll();
   const scrollPosition = Math.min(MAX_ANIMATED_SCROLL, y);
 
   const styles = useMemo(

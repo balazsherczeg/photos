@@ -1,10 +1,26 @@
-import React from 'react';
-import classcat from 'classcat';
+import React, { useMemo } from 'react';
 import useScroll from 'hooks/useScroll';
 import styled from 'styled-components';
 import Navigation from './Navigation/Navigation';
 
-const Root = styled.header`
+const MAX_ANIMATED_SCROLL = 200;
+
+// https://easings.net/
+const easeInOutCubic = (x: number): number =>
+  x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+
+const scrollToScale = (
+  scrollPosition: number,
+  startValue: number,
+  endValue: number
+) => {
+  const scale =
+    (MAX_ANIMATED_SCROLL - Math.min(scrollPosition, MAX_ANIMATED_SCROLL)) /
+    MAX_ANIMATED_SCROLL;
+  return endValue + easeInOutCubic(scale) * (startValue - endValue);
+};
+
+const Root = styled.header<{ scrollPositionY: number }>`
   align-items: center;
   background: #fff;
   box-sizing: border-box;
@@ -16,11 +32,9 @@ const Root = styled.header`
   width: 100%;
   z-index: 10;
 
-  transition: 0.5s;
-
   & .title {
     line-height: 2rem;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-family: var(--sansSubsetForTitle);
     font-weight: 300;
 
@@ -28,31 +42,49 @@ const Root = styled.header`
       font-weight: 600;
     }
 
-    transition: 0.5s;
-    transform: scale3d(1, 1, 1);
     transform-origin: 0 50% 0;
-  }
-
-  &.minimal {
-    height: 2rem;
-
-    .title {
-      transform: scale3d(0.8, 0.8, 1);
-    }
   }
 `;
 
 const Header = () => {
   const { y } = useScroll();
+  const scrollPosition = Math.min(MAX_ANIMATED_SCROLL, y);
 
-  console.log(y);
+  const styles = useMemo(
+    () => ({
+      root: {
+        transform: `translate3d(0, ${scrollToScale(
+          scrollPosition,
+          0,
+          -2
+        )}rem, 0)`,
+      },
+      title: {
+        transform: `scale3d(
+          ${scrollToScale(scrollPosition, 1, 0.75)}, 
+          ${scrollToScale(scrollPosition, 1, 0.75)},
+          1
+        ) translate3d(0, ${scrollToScale(scrollPosition, 0, 1.25)}rem, 0)`,
+      },
+      navigation: {
+        transform: `translate3d(0, ${scrollToScale(
+          scrollPosition,
+          0,
+          1
+        )}rem, 0)`,
+      },
+    }),
+    [scrollPosition]
+  );
 
   return (
-    <Root className={classcat({ minimal: y > 20 })}>
-      <h1 className="title">
+    <Root scrollPositionY={scrollPosition} style={styles.root}>
+      <h1 className="title" style={styles.title}>
         <b>Balázs Herczeg</b> amateur photography
       </h1>
-      <Navigation />
+      <div style={styles.navigation}>
+        <Navigation />
+      </div>
     </Root>
   );
 };

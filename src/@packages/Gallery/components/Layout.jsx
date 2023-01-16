@@ -17,19 +17,15 @@ const Modal = styled.div`
   width: 100vw;
 
   &.VMG__Modal--enter {
-    opacity: 1;
     transform: translate3d(0, 100vh, 0);
   }
   &.VMG__Modal--enter-done {
-    opacity: 1;
     transform: translate3d(0, 0, 0);
   }
   &.VMG__Modal--exit {
-    opacity: 1;
     transform: translate3d(0, 0, 0);
   }
   &.VMG__Modal--exit-done {
-    opacity: 1;
     transform: translate3d(0, 100vh, 0);
   }
 `;

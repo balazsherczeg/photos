@@ -20,6 +20,7 @@ const Gallery = ({ items }: { items: Item[] }) => {
   const [fullView, setFullView] = useState<number | null>(null);
   const [showFullView, setShowFullView] = useState(false);
   const { paramItemId } = useMatch('/item/:paramItemId') ?? ({} as any);
+  const { paramTag } = useMatch('/tag/:paramTag') ?? ({} as any);
   const { observe: containerRef, width: containerWidth } = useDimensions();
   const layoutCache = useMasonry(items, containerWidth);
 
@@ -29,7 +30,10 @@ const Gallery = ({ items }: { items: Item[] }) => {
     if (paramItemId) {
       setShowFullView(true);
     }
-  }, [paramItemId]);
+    if (paramTag) {
+      setShowFullView(false);
+    }
+  }, [paramItemId, paramTag]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

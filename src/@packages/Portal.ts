@@ -6,8 +6,8 @@ const Portal = ({
   zIndex = 100,
   position = 'absolute',
 }: React.PropsWithChildren<{
-  zIndex: number;
-  position: 'absolute' | 'relative';
+  zIndex?: number;
+  position?: 'absolute' | 'relative';
 }>) => {
   const [container, setContainer] = useState<any>(null);
 
@@ -24,7 +24,7 @@ const Portal = ({
     };
   }, [container, position, zIndex]);
 
-  if (container) return ReactDOM.createPortal(children, container);
+  return container ? ReactDOM.createPortal(children, container) : null;
 };
 
 export default Portal;

@@ -20,7 +20,7 @@ const scrollToScale = (
   return endValue + easeInOutCubic(scale) * (startValue - endValue);
 };
 
-const Root = styled.header<{ scrollPositionY: number }>`
+const Root = styled.header`
   align-items: center;
   background: #fff;
   box-sizing: border-box;
@@ -78,7 +78,7 @@ const Header = () => {
   );
 
   return (
-    <Root scrollPositionY={scrollPosition} style={styles.root}>
+    <Root style={styles.root}>
       <h1 className="title" style={styles.title}>
         <b>Balázs Herczeg</b> amateur photography
       </h1>

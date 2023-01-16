@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { number } from 'prop-types';
 import styled from 'styled-components';
-import {
-  getLargeEnoughSource,
-  getLargestLoadedSource,
-  itemPropType,
-} from '../data';
+import { getLargeEnoughSource, getLargestLoadedSource } from '../data';
 
 const Wrapper = styled.div`
   background-color: #eee;
@@ -78,13 +73,5 @@ const ImageComponent = ({ item, size: { width, height } }) => {
     </Wrapper>
   );
 };
-
-// ImageComponent.propTypes = {
-//   item: itemPropType.isRequired,
-//   size: {
-//     width: number,
-//     height: number,
-//   }.isRequired,
-// };
 
 export default ImageComponent;

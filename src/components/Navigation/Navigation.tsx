@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import Tags from 'components/Tags';
+import { TaxonomyTypes } from 'models/Taxonomy';
 import styled from 'styled-components';
-import SlideIn from '@packages/SlideIn';
+import SlideIn from '@packages/SlideIn/SlideIn';
+import useTags from 'data/useTags';
+import useTaxonomy from 'data/useTaxonomy';
 import Categories from './components/Categories';
-import Tags from './components/Tags';
 
 const Button = styled.button`
   align-items: center;
@@ -37,10 +40,17 @@ const SidebarRoot = styled.nav`
     padding-left: 2rem;
     text-transform: uppercase;
   }
+
+  & .tagsWrapper {
+    padding: 0.5rem 1rem 0 2rem;
+    margin-left: -2px;
+  }
 `;
 
 const Navigation = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const tags = useTags();
+  const { taxonomyType, taxonomyValue } = useTaxonomy();
 
   const handleClick = () => {
     setShowMenu(!showMenu);
@@ -69,7 +79,14 @@ const Navigation = () => {
           <Categories />
 
           <h3>Tags</h3>
-          <Tags />
+          <div className="tagsWrapper">
+            <Tags
+              tags={Object.keys(tags)}
+              activeTag={
+                taxonomyType === TaxonomyTypes.TAG ? taxonomyValue : undefined
+              }
+            />
+          </div>
         </SidebarRoot>
       </SlideIn>
     </div>

@@ -1,11 +1,11 @@
 import React from 'react';
-import { object, number } from 'prop-types';
+import { Item as ItemType } from 'models/Item';
 import styled from 'styled-components';
 import Image from '../Image';
 import Caption from './Caption';
 import ImageSizer from './ImageSizer';
 
-const getOffset = (index) => `${index * 100}vw`;
+const getOffset = (index: number) => `${index * 100}vw`;
 
 const Main = styled.div`
   box-sizing: border-box;
@@ -33,25 +33,23 @@ const CaptionPositioned = styled(Caption)`
   z-index: 12;
 `;
 
-const Item = ({ item, index }) => (
-  <Main
-    className="VMG__CarrouselItem"
-    style={{
-      left: getOffset(index),
-    }}
-  >
-    <Inner className="VMG__CarrouselItem__inner">
-      <ImageSizer item={item}>
-        <Image item={item} />
-      </ImageSizer>
-      <CaptionPositioned item={item} />
-    </Inner>
-  </Main>
-);
-
-Item.propTypes = {
-  item: object.isRequired,
-  index: number.isRequired,
+const Item = ({ item, index }: { item: ItemType; index: number }) => {
+  console.log(item);
+  return (
+    <Main
+      className="VMG__CarrouselItem"
+      style={{
+        left: getOffset(index),
+      }}
+    >
+      <Inner className="VMG__CarrouselItem__inner">
+        <ImageSizer item={item}>
+          <Image item={item} />
+        </ImageSizer>
+        <CaptionPositioned item={item} />
+      </Inner>
+    </Main>
+  );
 };
 
 export default Item;

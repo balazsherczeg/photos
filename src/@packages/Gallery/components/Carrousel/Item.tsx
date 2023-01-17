@@ -1,7 +1,8 @@
 import React from 'react';
-import { Item as ItemType } from 'models/Item';
+import { ItemType } from 'models/Item';
 import styled from 'styled-components';
-import Image from '../Image';
+import { SizeType } from '@packages/Gallery/models/LayoutCache';
+import Picture from '../Picture/Picture';
 import Caption from './Caption';
 import ImageSizer from './ImageSizer';
 
@@ -34,7 +35,6 @@ const CaptionPositioned = styled(Caption)`
 `;
 
 const Item = ({ item, index }: { item: ItemType; index: number }) => {
-  console.log(item);
   return (
     <Main
       className="VMG__CarrouselItem"
@@ -44,7 +44,7 @@ const Item = ({ item, index }: { item: ItemType; index: number }) => {
     >
       <Inner className="VMG__CarrouselItem__inner">
         <ImageSizer item={item}>
-          <Image item={item} />
+          <Picture item={item} size={{} as SizeType} />
         </ImageSizer>
         <CaptionPositioned item={item} />
       </Inner>

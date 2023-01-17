@@ -1,11 +1,14 @@
-export interface Position {
+export interface SizeType {
+  height: number;
+  width: number;
+}
+
+export interface PositionType extends SizeType {
   left: number;
   top: number;
-  width: number;
-  height: number;
 }
 
 export interface LayoutCache {
   containerHeight: number;
-  positions: Position[];
+  positions: PositionType[];
 }

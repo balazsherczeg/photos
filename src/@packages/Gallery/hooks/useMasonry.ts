@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { Item } from 'models/Item';
-import { getRatio } from '@packages/Gallery/data';
+import { ItemType } from 'models/Item';
+import { getRatio } from '@packages/Gallery/utils';
 import { LayoutCache } from '../models/LayoutCache';
 
 const MAX_COLUMN_WIDTH = 200;
@@ -33,7 +33,7 @@ function calculateNextBottom(bottom: number, height: number) {
   return bottom + height + GUTTER;
 }
 
-function calculateMasonry(items: Item[], containerWidth: number): LayoutCache {
+function calculateMasonry(items: ItemType[], containerWidth: number): LayoutCache {
   const { columnCount, columnWidth } = getLayout(containerWidth);
   const bottoms = Array.from({ length: columnCount }, () => 0);
   const layoutCache = { positions: [], containerHeight: 0 } as LayoutCache;
@@ -68,7 +68,7 @@ function calculateMasonry(items: Item[], containerWidth: number): LayoutCache {
   return layoutCache;
 }
 
-const useMasonry = (items: Item[], containerWidth: number) => {
+const useMasonry = (items: ItemType[], containerWidth: number) => {
   return useMemo(
     (): LayoutCache => calculateMasonry(items, containerWidth),
     [containerWidth, items]

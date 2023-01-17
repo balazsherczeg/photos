@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
-import { Position } from '@packages/Gallery/models/LayoutCache';
+import { PositionType } from '@packages/Gallery/models/LayoutCache';
 import { useWindowSize, useScroll } from '../hooks';
 
 const getVisibleItems = (
   renderedItems: JSX.Element[],
-  positions: Position[],
+  positions: PositionType[],
   windowHeight: number,
   scrollTop: number
 ): JSX.Element[] => {
@@ -24,7 +24,7 @@ const getVisibleItems = (
 
 const useVisibleItems = (
   renderedItems: JSX.Element[],
-  positions: Position[]
+  positions: PositionType[]
 ): JSX.Element[] => {
   const { height: windowHeight = 0 } = useWindowSize();
   const { y: scrollTop } = useScroll();

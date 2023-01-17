@@ -3,20 +3,20 @@ import { useCallback } from 'react';
 import useDimensions from 'react-cool-dimensions';
 import { useMatch } from '@reach/router';
 import { navigate } from 'gatsby';
-import { Item } from 'models/Item';
+import { ItemType } from 'models/Item';
 import styled from 'styled-components';
 import Carrousel from './components/Carrousel';
-import ImageComponent from './components/Image';
 import Layout from './components/Layout';
 import Loading from './components/Loading';
 import Masonry from './components/Masonry';
+import Picture from './components/Picture/Picture';
 import useMasonry from './hooks/useMasonry';
 
 const MasonryItem = styled.div`
   position: absolute;
 `;
 
-const Gallery = ({ items }: { items: Item[] }) => {
+const Gallery = ({ items }: { items: ItemType[] }) => {
   const [fullView, setFullView] = useState<number | null>(null);
   const [showFullView, setShowFullView] = useState(false);
   const { paramItemId } = useMatch('/item/:paramItemId') ?? ({} as any);
@@ -90,7 +90,7 @@ const Gallery = ({ items }: { items: Item[] }) => {
           role="button"
           id={item.id}
         >
-          <ImageComponent item={item} size={layoutCache.positions[index]} />
+          <Picture item={item} size={layoutCache.positions[index]} />
         </MasonryItem>
       );
     },

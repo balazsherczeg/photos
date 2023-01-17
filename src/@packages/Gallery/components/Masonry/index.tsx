@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import { Position } from '@packages/Gallery/models/LayoutCache';
+import { PositionType } from '@packages/Gallery/models/LayoutCache';
 import useVisibleItems from './useVisibleItems';
 
 const Root = styled.div`
@@ -12,7 +12,7 @@ const Masonry = ({
   height,
   itemRendererFn,
 }: {
-  positions: Position[];
+  positions: PositionType[];
   height: number;
   itemRendererFn: (index: number) => any;
 }) => {

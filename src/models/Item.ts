@@ -1,12 +1,12 @@
-interface Source {
+export interface SourceType {
   src: string;
   width: number;
   height: number;
 }
 
-export interface Item {
+export interface ItemType {
   id: string;
-  sources: { [key: string]: Source };
+  sources: { [key: string]: SourceType };
   meta: {
     color: string;
     caption: string;

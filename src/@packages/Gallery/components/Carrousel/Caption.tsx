@@ -1,6 +1,6 @@
 import React from 'react';
 import Tags from 'components/Tags';
-import { Item } from 'models/Item';
+import { ItemType } from 'models/Item';
 import styled from 'styled-components';
 
 const Root = styled.div`
@@ -13,6 +13,7 @@ const Root = styled.div`
   padding: 0 1rem;
 
   & .meta {
+    align-items: center;
     display: flex;
     gap: 1rem;
   }
@@ -32,7 +33,7 @@ const Caption = ({
   },
   className = null,
 }: {
-  item: Item;
+  item: ItemType;
   className?: string | null;
 }) => {
   return (

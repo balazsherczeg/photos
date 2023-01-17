@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Item } from 'models/Item';
+import { ItemType } from 'models/Item';
 import { TaxonomyTypes } from 'models/Taxonomy';
 import useCategories from './useCategories';
 import useData from './useData';
@@ -7,7 +7,7 @@ import useTaxonomy from './useTaxonomy';
 import { getCategoryIdBySlug } from './utils';
 
 // If no category, we sort as a blog
-const sortByDateDescFn = (a: Item, b: Item) => {
+const sortByDateDescFn = (a: ItemType, b: ItemType) => {
   if (a.meta.date === b.meta.date) {
     return a.id < b.id ? 1 : -1;
   } else {
@@ -15,12 +15,12 @@ const sortByDateDescFn = (a: Item, b: Item) => {
   }
 };
 
-const useItems = (): Item[] => {
+const useItems = (): ItemType[] => {
   const { items: allItems = [] } = useData();
   const { taxonomyValue, taxonomyType } = useTaxonomy();
   const categories = useCategories();
 
-  const [items, setItems] = useState<Item[]>([]);
+  const [items, setItems] = useState<ItemType[]>([]);
 
   const allItemsSorted = useMemo(
     () => [...allItems].sort(sortByDateDescFn),
@@ -32,14 +32,14 @@ const useItems = (): Item[] => {
       const categoryId = getCategoryIdBySlug(taxonomyValue, categories);
 
       const filteredData = allItems.filter(
-        (item: Item) => item.category === categoryId
+        (item: ItemType) => item.category === categoryId
       );
       setItems(filteredData);
     }
 
     if (taxonomyType === TaxonomyTypes.TAG && taxonomyValue != null) {
       const filteredData = allItems.filter(
-        (item: Item) => item.tags?.indexOf(taxonomyValue) > -1
+        (item: ItemType) => item.tags?.indexOf(taxonomyValue) > -1
       );
       setItems(filteredData);
     }

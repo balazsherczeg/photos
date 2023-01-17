@@ -1,72 +1,74 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { node } from 'prop-types';
+import React, { useRef, useMemo } from 'react';
+import { ItemType } from 'models/Item';
 import styled from 'styled-components';
-import { getRatio, itemPropType } from '../../data';
+import { getRatio } from '../../utils';
 import { useWindowSize } from '../hooks';
 
-const Container = styled.div`
+const Root = styled.div`
   align-items: center;
   display: flex;
   height: 100%;
   justify-content: center;
   position: relative;
   width: 100%;
+
+  & .contained {
+    overflow: hidden;
+  }
 `;
 
-const Contained = styled.div`
-  overflow: hidden;
-`;
-
-const ImageSizer = ({ item, children }) => {
-  const containerRef = useRef(null);
+const ImageSizer = ({
+  children,
+  item,
+}: {
+  children: React.ReactElement<any>;
+  item: ItemType;
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const windowSize = useWindowSize();
-
-  const [containerSize, setContainerSize] = useState(null);
-  const [containedSize, setContainedSize] = useState({});
 
   const imageRatio = getRatio(item);
 
-  useEffect(() => {
-    if (containerRef != null) {
+  const containerSize = useMemo(() => {
+    if (containerRef.current) {
       const { width, height } = containerRef.current.getBoundingClientRect();
-      setContainerSize({ width, height });
+      return { width, height };
     }
+    return null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [containerRef, windowSize]);
 
-  useEffect(() => {
+  const containedSize = useMemo(() => {
     if (containerSize) {
       const { height: containerHeight, width: containerWidth } = containerSize;
 
       const containerRatio = containerWidth / containerHeight;
 
       if (imageRatio >= containerRatio) {
-        setContainedSize({
+        return {
           height: containerWidth / imageRatio,
           width: containerWidth,
-        });
+        };
       }
 
       if (imageRatio < containerRatio) {
-        setContainedSize({
+        return {
           height: containerHeight,
           width: containerHeight * imageRatio,
-        });
+        };
       }
+
+      return {};
     }
   }, [imageRatio, containerSize]);
 
   return (
-    <Container ref={containerRef}>
-      <Contained style={containedSize}>
+    <Root ref={containerRef}>
+      <div className="contained" style={containedSize}>
         {React.cloneElement(children, { size: containedSize })}
-      </Contained>
-    </Container>
+      </div>
+    </Root>
   );
-};
-
-ImageSizer.propTypes = {
-  children: node.isRequired,
-  item: itemPropType.isRequired,
 };
 
 export default ImageSizer;

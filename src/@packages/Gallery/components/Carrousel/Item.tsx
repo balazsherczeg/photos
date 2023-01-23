@@ -8,47 +8,37 @@ import ImageSizer from './ImageSizer';
 
 const getOffset = (index: number) => `${index * 100}vw`;
 
-const Main = styled.div`
+const Root = styled.div`
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
   padding: 1rem 1rem 3rem;
   position: absolute;
   width: 100vw;
   z-index: 10;
-`;
 
-const Inner = styled.div`
-  width: 100%;
-  height: 100%;
-
-  & > * {
-    flex: none;
+  & .captionPosititoner {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 12;
   }
-`;
-
-const CaptionPositioned = styled(Caption)`
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  z-index: 12;
 `;
 
 const Item = ({ item, index }: { item: ItemType; index: number }) => {
   return (
-    <Main
-      className="VMG__CarrouselItem"
+    <Root
       style={{
         left: getOffset(index),
       }}
     >
-      <Inner className="VMG__CarrouselItem__inner">
-        <ImageSizer item={item}>
-          <Picture item={item} size={{} as SizeType} />
-        </ImageSizer>
-        <CaptionPositioned item={item} />
-      </Inner>
-    </Main>
+      <ImageSizer item={item}>
+        <Picture item={item} size={{} as SizeType} />
+      </ImageSizer>
+      <div className="captionPositioner">
+        <Caption item={item} />
+      </div>
+    </Root>
   );
 };
 

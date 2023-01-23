@@ -7,14 +7,12 @@ import Portal from '@packages/Portal';
 const Modal = styled.div`
   background-color: white;
   bottom: 0;
-  height: 100vh;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
   transform: translate3d(0, 100vh, 0);
   transition: 0.3s;
-  width: 100vw;
 
   &.VMG__Modal--enter {
     transform: translate3d(0, 100vh, 0);

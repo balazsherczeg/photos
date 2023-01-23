@@ -6,7 +6,7 @@ import Item from './Item';
 
 const Wrapper = styled.div`
   background: rgba(255, 255, 255, 0.9);
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   width: 100vw;
   position: relative;
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const Main = styled.div`
   position: absolute;
-  height: 100vh;
+  height: 100%;
   transition: transform 0.5s;
 `;
 

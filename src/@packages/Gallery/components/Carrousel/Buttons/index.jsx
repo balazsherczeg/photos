@@ -12,13 +12,13 @@ const CloseButtonPositioned = styled(CloseButton)`
 
 const PrevButtonPositioned = styled(PrevButton)`
   left: 20px;
-  top: 50vh;
+  top: 50%;
   margin-top: -24px;
 `;
 
 const NextButtonPositioned = styled(NextButton)`
   right: 20px;
-  top: 50vh;
+  top: 50%;
   margin-top: -24px;
 `;
 

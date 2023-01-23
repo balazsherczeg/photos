@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const Root = styled.div`
   align-items: center;
   background-color: #fff;
+  background: none;
   display: flex;
   flex-direction: row-reverse;
   height: 3rem;

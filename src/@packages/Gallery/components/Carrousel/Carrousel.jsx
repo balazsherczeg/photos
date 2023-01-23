@@ -5,16 +5,16 @@ import Buttons from './Buttons';
 import Item from './Item';
 
 const Wrapper = styled.div`
-  background: rgba(255, 255, 255, 0.9);
+  background: #fff;
   height: 100%;
   overflow: hidden;
-  width: 100vw;
   position: relative;
+  width: 100vw;
 `;
 
 const Main = styled.div`
-  position: absolute;
   height: 100%;
+  position: absolute;
   transition: transform 0.5s;
 `;
 

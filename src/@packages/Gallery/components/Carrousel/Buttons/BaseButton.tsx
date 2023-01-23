@@ -1,23 +1,24 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const BaseButton = styled.button`
   background-color: #fff;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 24px;
+  border-radius: 1.5rem;
   border: none;
   cursor: pointer;
-  height: 48px;
+  height: 3rem;
+  opacity: 0.5;
   outline: none;
   padding: 0;
   position: absolute;
-  width: 48px;
+  -webkit-tap-highlight-color: transparent;
+  width: 3rem;
   z-index: 100;
-  opacity: 0.5;
 
-  &:hover {
+  &:active {
     opacity: 1;
   }
 `;
 
-export default Button;
+export default BaseButton;

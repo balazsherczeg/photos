@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import Portal from '@packages/Portal';
 
 const Modal = styled.div`
-  background-color: white;
   bottom: 0;
   left: 0;
   position: fixed;

@@ -19,7 +19,6 @@ const Root = styled.div`
 
   & img {
     border: none;
-    cursor: pointer;
     height: auto;
     opacity: 0;
     transition: opacity 1s;

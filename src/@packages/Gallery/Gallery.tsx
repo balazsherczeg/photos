@@ -14,6 +14,10 @@ import useMasonry from './hooks/useMasonry';
 
 const MasonryItem = styled.div`
   position: absolute;
+
+  & img {
+    cursor: pointer;
+  }
 `;
 
 const Gallery = ({ items }: { items: ItemType[] }) => {
@@ -86,7 +90,6 @@ const Gallery = ({ items }: { items: ItemType[] }) => {
           key={item.id}
           style={position}
           onClick={() => handleItemClick(index)}
-          className="VMG__MasonryItem"
           role="button"
           id={item.id}
         >

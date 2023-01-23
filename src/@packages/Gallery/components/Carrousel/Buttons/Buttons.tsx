@@ -9,7 +9,7 @@ const svgClose = encodeURIComponent(
 const CloseButton = styled(BaseButton)`
   background-image: url('data:image/svg+xml;utf8,${svgClose}');
   top: 0.5rem;
-  left: 0.5rem;
+  right: 0.5rem;
 `;
 
 const svgNext = encodeURIComponent(

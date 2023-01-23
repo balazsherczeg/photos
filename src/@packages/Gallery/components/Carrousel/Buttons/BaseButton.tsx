@@ -23,6 +23,10 @@ const BaseButton = styled.button`
     border-radius: 1rem;
     height: 2rem;
     width: 2rem;
+
+    &:hover {
+      opacity: 0.75;
+    }
   }
 
   &:active {
